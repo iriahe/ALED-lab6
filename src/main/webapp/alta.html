@@ -1,10 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Alta</title>
+	<link rel='stylesheet' href='estilos.css'>
+	<script> function validar() {
+		var numero, letra, letras, formato;
+		letras = 'TRWAGMYFPDXBNJZSQVHLCKET';
+		formato = /^\d{8}[a-zA-Z]$/;
+		dni = document.forms["formulario"]["dni"].value;
+		if(formato.test(dni)){
+		numero = dni.substr(0, dni.length-1);
+		letra = dni.substr(dni.length-1, 1);
+		numero = numero % 23;
+		letras=letras.substring(numero, numero+1);
+		if (letras!=letra) {
+		alert("Letra errónea");
+		return false;
+		}
+		else
+		return true;
+		}
+		else{
+		alert("Formato erróneo");
+		return false;
+		}
+		}
+	</script>
 </head>
 <body>
-
+	<header>
+	<table>
+		<tr>
+			<td><img src="Ficheros auxiliares-20251204/logo.png"/></td>
+			<td><h1>Gestión hospitalaria</h1></td>
+		</tr>
+	</table>
+	</header>
+	<nav>
+		<a href="index.html">Inicio</a>
+		<a href="alta.html">Alta</a>
+		<a href="baja.html">Baja</a>
+		<a href="consulta.html">Consulta</a>
+	</nav>
+	<section>
+		<h2>Alta</h2>
+		<form name="formulario" method="post">
+			<table>
+				<tr>
+					<td>Nombre:</td>
+					<td>
+						<input type="text" name="Nombre">
+					</td>
+				</tr>
+				<tr>
+					<td>Apellidos:</td>
+					<td>
+						<input type="text" name="Apellidos">
+					</td>
+				</tr>
+				<tr>
+					<td>DNI:</td>
+					<td>
+						<input type="text" name="dni">
+					</td>
+				</tr>
+				<tr>
+				<td>
+					<input type="submit" value="submit" onclick="return validar()">
+				</td>
+				</tr>
+			</table>
+		</form>
+	</section>
+	<footer>
+		<p>Iria He Enviar correo a iriahe@gmail.com</p>
+	</footer>
 </body>
 </html>
